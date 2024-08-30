@@ -1,0 +1,5 @@
+Script started on 2024-08-30 11:36:40+02:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="120" LINES="30"]
+[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ ex[Kcho hi
+[?2004lhi
+[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ [?2004l
+exit

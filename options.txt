@@ -1,0 +1,11 @@
+start
+stop
+restart
+status
+configure
+help
+update
+deploy
+rollback
+show
+list
