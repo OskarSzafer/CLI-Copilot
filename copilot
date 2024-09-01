@@ -8,7 +8,7 @@ OPTIONS_FILE="${SCRIPT_DIR}/options.txt"
 _generate_suggestions() {
     local word="$1"
     # Get only the first match
-    grep -i "$word" "$OPTIONS_FILE" | head -n 1
+    grep -i "^$word" "$OPTIONS_FILE" | head -n 1
 }
 
 # Widget function for autosuggestions

@@ -1,11 +1,3 @@
 start
-stop
-restart
-status
-configure
-help
+sudo
 update
-deploy
-rollback
-show
-list
