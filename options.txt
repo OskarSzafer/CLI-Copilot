@@ -1,4 +1,4 @@
-start working
+start
 stop
 restart
 status

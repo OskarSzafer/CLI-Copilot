@@ -8,7 +8,7 @@ OPTIONS_FILE="${SCRIPT_DIR}/options.txt"
 _generate_suggestions() {
     local word="$1"
     # Get only the first match
-    grep -i "^$word" "$OPTIONS_FILE" | head -n 1
+    grep -i "$word" "$OPTIONS_FILE" | head -n 1
 }
 
 # Widget function for autosuggestions
@@ -45,6 +45,7 @@ fi
 autoload -U add-zle-hook-widget
 add-zle-hook-widget line-init _autosuggestion_widget
 add-zle-hook-widget keymap-select _autosuggestion_widget
+add-zle-hook-widget zle-line-pre-redraw _autosuggestion_widget
 
 # Bind the widget to a key (e.g., right arrow)
 zle -N insert_autosuggestion_widget insert_autosuggestion
