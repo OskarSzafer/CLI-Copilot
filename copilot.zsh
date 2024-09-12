@@ -1,14 +1,14 @@
 #!/bin/zsh
 # Get the directory of the script
 SCRIPT_DIR=${0:a:h}
-# File containing the options (in the same directory as the script)
-OPTIONS_FILE="${SCRIPT_DIR}/options.txt"
 
 # Function to generate suggestions
 _generate_suggestions() {
     local word="$1"
-    # Get only the first match
-    grep -i "^$word" "$OPTIONS_FILE" | head -n 1
+    local history=$(history | tail -n 10)
+    local ls_output=$(echo -e "\nOutput of 'ls':"; ls; echo -e "\nOutput of 'ls ..':"; ls ..)
+    
+    python3 $SCRIPT_DIR/generate_completition.py "$word" "$history" "$ls_output"
 }
 
 # Widget function for autosuggestions
@@ -17,7 +17,9 @@ _autosuggestion_widget() {
     
     if [[ -n "$suggestion" ]]; then
         # Display only the remaining part of the suggestion
-        POSTDISPLAY="${suggestion#$BUFFER}"
+        # POSTDISPLAY="${suggestion#$BUFFER}"
+        POSTDISPLAY="${suggestion}"
+
     else
         POSTDISPLAY=""
     fi
@@ -34,11 +36,6 @@ insert_autosuggestion() {
     
     zle redisplay
 }
-
-# Check if OPTIONS_FILE exists
-if [[ ! -f "$OPTIONS_FILE" ]]; then
-    echo "Warning: $OPTIONS_FILE not found. Please create this file with your desired options." >&2
-fi
 
 
 # Set up hooks to update suggestions as you type
