@@ -1,98 +1,0 @@
-Script started on 2024-08-30 12:59:38+02:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="120" LINES="30"]
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ lm 
-configure  help       restart    show       status     update     
-deploy     list       rollback   start      stop       
-(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ lm s
-show    start   status  stop    
-(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ lm show [K[K[Kow 
-[?2004lCommand 'show' not found, but can be installed with:
-sudo apt install mailutils-mh  # version 1:3.14-1, or
-sudo apt install mmh           # version 0.4-4
-sudo apt install nmh           # version 1.7.1-11
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ cd 
-.git/        __pycache__/ 
-(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ cd git clm show cd git clm show python3 copilot.pye[C[C[C[C[C[C[C[C[C[C[C3[C[C[C[C[C[C[C[C[C[C[Ce[C[C[C[C[C[C[C[C[C[C[C
-[?2004lCommand 'pythone' not found, did you mean:
-  command 'python0' from snap python0 (0.9.1)
-  command 'python3' from deb python3 (3.10.6-1~22.04.1)
-  command 'python2' from deb python2 (2.7.18-3)
-See 'snap info <snapname>' for additional versions.
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ pythone copilot.py[Kpythone copilot.py[10Plm show python3 copilot.pye[C[C[C[C[C[C[C[C[C[C[C3[C[C[C[C[C[C[C[C[C[C[C
-[?2004l> af[K[Ka[Kapple
-You entered: apple
-> apple[K[K[Kple
-You entered: apple
-> apple[C[C[Kapple[K[K[K[K[K
-You entered: 
-> 
-You entered: 
-> Traceback (most recent call last):
-  File "/mnt/c/Users/oskar/documents/github/cli-copilot/copilot.py", line 58, in <module>
-    break
-
-  File "/mnt/c/Users/oskar/documents/github/cli-copilot/copilot.py", line 50, in main
-    
-KeyboardInterrupt
-
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ python3 copilot.py[Kpython3 copilot.py
-[?2004l[90m[0m[H[2J[3Jw[90m[0m[H[2J[3Jwe[90m[0m[H[2J[3Jw[90m[0m[H[2J[3J[90mgit[0m[H[2J[3Je[90m[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3Jg[90mit[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgita[90madd[0m[H[2J[3Jgitad[90m[0m[H[2J[3Jgitadd[90m[0m[H[2J[3Jgitad[90m[0m[H[2J[3Jgita[90madd[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit a[90mdd[0m[H[2J[3Jgit ad[90md[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit add [90m[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit ad[90md[0m[H[2J[3Jgit a[90mdd[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jg[90mit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m
-Exiting...
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ python3 copilot.py
-[?2004lEnter the string to fill the line with: aadsfaf
-aadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfafaadsfaf[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ adfd[K[K[K[Kpython3 copilot.py
-[?2004lWprowadź tekst (naciśnij Tab, aby uzupełnić): a[Kafd
-Wprowadzono: afd
-Wprowadź tekst (naciśnij Tab, aby uzupełnić): 
- do wstawienia            do wstawienia             kst do wstawienia         tawienia
- tekst do wstawienia      ekst do wstawienia        nia                       tekst do wstawienia
- wstawienia               enia                      o wstawienia              wienia
-Twój tekst do wstawienia  ia                        st do wstawienia          wstawienia
-a                         ienia                     stawienia                 wój tekst do wstawienia
-awienia                   j tekst do wstawienia     t do wstawienia           ój tekst do wstawienia
-Wprowadź tekst (naciśnij Tab, aby uzupełnić): c[KTraceback (most recent call last):
-  File "/mnt/c/Users/oskar/documents/github/cli-copilot/copilot.py", line 11, in <module>
-    line = input("Wprowadź tekst (naciśnij Tab, aby uzupełnić): ")
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-KeyboardInterrupt
-
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ /[Kpython3 copilot.py
-[?2004l  File "/mnt/c/Users/oskar/documents/github/cli-copilot/copilot.py", line 36
-    print("\nExiting...")v
-                         ^
-SyntaxError: invalid syntax
-[?2004h(base) ]0;oskar_szafer@HPpavilon: /mnt/c/Users/oskar/documents/github/cli-copilot[01;32moskar_szafer@HPpavilon[00m:[01;34m/mnt/c/Users/oskar/documents/github/cli-copilot[00m$ python3 copilot.py
-[?2004l[90m[0m[H[2J[3Ja[90m[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jg[90mit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3Jh[90m[0m[H[2J[3Jhi[90m[0m[H[2J[3Jhi [90m[0m[H[2J[3Jhi [90m[0m[H[2J[3Jhi[90m[0m[H[2J[3Jh[90m[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3Jc[90m[0m[H[2J[3Jcd[90m[0m[H[2J[3Jcd [90m[0m[H[2J[3Jcd [90m[0m[H[2J[3Jcd[90m[0m[H[2J[3Jc[90m[0m[H[2J[3J[90mgit[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit add [90m[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit ad[90md[0m[H[2J[3Jgit a[90mdd[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jg[90mit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3Jg[90mit[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit add [90m[0m
-Executing: git add 
-[H[2J[3J[90mgit[0m[H[2J[3Ja[90m[0m[H[2J[3Jas[90m[0m[H[2J[3Jasd[90m[0m[H[2J[3Jasdf[90m[0m
-Executing: asdf
-[H[2J[3J[90mgit[0m[H[2J[3Ja[90m[0m[H[2J[3Jas[90m[0m[H[2J[3Jasd[90m[0m
-Executing: asd
-[H[2J[3J[90mgit[0m[H[2J[3Ja[90m[0m[H[2J[3Jas[90m[0m[H[2J[3Jasd[90m[0m[H[2J[3Jasdf[90m[0m
-Executing: asdf
-[H[2J[3J[90mgit[0m[H[2J[3Ja[90m[0m[H[2J[3Jas[90m[0m[H[2J[3Jasd[90m[0m[H[2J[3Jasdf[90m[0m
-Executing: asdf
-[H[2J[3J[90mgit[0m[H[2J[3Ja[90m[0m[H[2J[3Jas[90m[0m
-Executing: as
-[H[2J[3J[90mgit[0m[H[2J[3Js[90m[0m
-Executing: s
-[H[2J[3J[90mgit[0m[H[2J[3Js[90m[0m
-Executing: s
-[H[2J[3J[90mgit[0m[H[2J[3Js[90m[0m
-Executing: s
-[H[2J[3J[90mgit[0m[H[2J[3Js[90m[0m
-Executing: s
-[H[2J[3J[90mgit[0m[H[2J[3Js[90m[0m
-Executing: s
-[H[2J[3J[90mgit[0m[H[2J[3Js[90m[0m
-Executing: s
-[H[2J[3J[90mgit[0m[H[2J[3Jg[90mit[0m[H[2J[3Jgit[90m add[0m
-Executing: git
-[H[2J[3J[90mgit[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgitg[90madd[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit ad[90md[0m[H[2J[3Jgit a[90mdd[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jg[90mit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3Jd[90mocker[0m[H[2J[3Jdo[90mcker[0m[H[2J[3Jdoc[90mker[0m[H[2J[3Jdo[90mcker[0m[H[2J[3Jdocker[90m run[0m[H[2J[3Jdocker run[90m[0m[H[2J[3Jdocker run[90m[0m
-Executing: docker run
-[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J[90mgit[0m[H[2J[3J [90m[0m[H[2J[3J[90mgit[0m
-Executing: 
-[H[2J[3J[90mgit[0m
-Executing: 
-[H[2J[3J[90mgit[0m
-Executing: 
-[H[2J[3J[90mgit[0m[H[2J[3J [90m[0m[H[2J[3J[90mgit[0m[H[2J[3Jg[90mit[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jgiq[90m[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit add [90m[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit add [90m[0m[H[2J[3Jgit add d[90m[0m[H[2J[3Jgit add df[90m[0m[H[2J[3Jgit add df [90m[0m[H[2J[3Jgit add df s[90m[0m[H[2J[3Jgit add df sa[90m[0m[H[2J[3Jgit add df saf[90m[0m[H[2J[3Jgit add df sa[90m[0m[H[2J[3Jgit add df s[90m[0m[H[2J[3Jgit add df [90m[0m[H[2J[3Jgit add df[90m[0m[H[2J[3Jgit add d[90m[0m[H[2J[3Jgit add [90m[0m[H[2J[3Jgit add[90m[0m[H[2J[3Jgit ad[90md[0m[H[2J[3Jgit a[90mdd[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jg[90mit[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jgi [90m[0m[H[2J[3Jgi t[90m[0m[H[2J[3Jgi [90m[0m[H[2J[3Jgi[90mt[0m[H[2J[3Jgit[90m add[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit s[90mtatus[0m[H[2J[3Jgit sf[90m[0m[H[2J[3Jgit sf [90m[0m[H[2J[3Jgit sf[90m[0m[H[2J[3Jgit s[90mtatus[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit  [90m[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit d[90m[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit s[90mtatus[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit s[90mtatus[0m[H[2J[3Jgit [90madd[0m[H[2J[3Jgit [90m[0m
