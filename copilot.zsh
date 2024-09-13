@@ -6,9 +6,10 @@ SCRIPT_DIR=${0:a:h}
 _generate_suggestions() {
     local word="$1"
     local history=$(history | tail -n 10)
-    local ls_output=$(echo -e "\nOutput of 'ls':"; ls; echo -e "\nOutput of 'ls ..':"; ls ..)
+    local ls_output=$(ls)
+    local ls2_output=$(ls ..)
     
-    python3 $SCRIPT_DIR/generate_completition.py "$word" "$history" "$ls_output"
+    python3 $SCRIPT_DIR/generate_completition.py "$word" "$history" "$ls_output" "$ls2_output"
 }
 
 # Widget function for autosuggestions
@@ -17,9 +18,7 @@ _autosuggestion_widget() {
     
     if [[ -n "$suggestion" ]]; then
         # Display only the remaining part of the suggestion
-        # POSTDISPLAY="${suggestion#$BUFFER}"
-        POSTDISPLAY="${suggestion}"
-
+        POSTDISPLAY="${suggestion#$BUFFER}"
     else
         POSTDISPLAY=""
     fi
