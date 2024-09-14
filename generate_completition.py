@@ -1,31 +1,66 @@
-import sys
 import os
+import time
+
 import google.generativeai as genai
 
 
-def generate_completion_function(current_line, command_history, arg3, arg4):
+OPTIONS_FILE=".options"
+CONTEXT_FILE=".context"
+
+model = None
+
+def read_file():
+    with open(CONTEXT_FILE, 'r') as file:
+        data = file.read()
+    
+    return data
+
+def save_output(output):
+    with open(OPTIONS_FILE, 'w') as file:
+        file.write(output)
+
+def watch_file(check_interval):
+    # Get the initial modification time of the file
+    last_modified_time = os.path.getmtime(CONTEXT_FILE)
+
+    while True:
+        # Check the modification time of the file
+        current_modified_time = os.path.getmtime(CONTEXT_FILE)
+        
+        if current_modified_time != last_modified_time:
+            try:
+                prompt = read_file()
+            except Exception as e:
+                print(e)
+                continue
+
+            if not prompt:
+                continue
+
+            try:
+                chat = model.start_chat(history=[])
+                response = chat.send_message(prompt)
+                completion = response.text
+            except Exception as e:
+                print(e)
+                continue
+
+            try:
+                save_output(completion)
+                print("updated")
+                
+                # Update the last modified time
+                last_modified_time = current_modified_time
+            except Exception as e:
+                print(e)
+        
+        # Wait for the specified interval before checking again
+        time.sleep(check_interval)
+
+
+if __name__ == "__main__":
     GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
     genai.configure(api_key=GOOGLE_API_KEY)
     model = genai.GenerativeModel('gemini-1.5-flash')
-    chat = model.start_chat(history=[])
 
-    prompt = f"""Given the current terminal line and command history, suggest a completion for the current command. 
-    Return only the completion text, without any explanation.
-    Current terminal line: {current_line}
-    Command history:
-    {command_history}"""
-
-    response = chat.send_message(prompt)
-    
-    completion = response.text
-
-    print(completion)
-
-if __name__ == "__main__":
-    arg1 = sys.argv[1]
-    arg2 = sys.argv[2]
-    arg3 = sys.argv[3]
-    arg4 = sys.argv[4]
-
-    # Call the function with the provided arguments
-    generate_completion_function(arg1, arg2, arg3, arg4)
+    watch_file(1)

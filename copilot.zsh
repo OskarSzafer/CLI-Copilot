@@ -2,28 +2,48 @@
 # Get the directory of the script
 SCRIPT_DIR=${0:a:h}
 
-# Function to generate suggestions
-_generate_suggestions() {
+OPTIONS_FILE="${SCRIPT_DIR}/.options"
+CONTEXT_FILE="${SCRIPT_DIR}/.context"
+
+_update_context() {
     local word="$1"
     local history=$(history | tail -n 10)
     local ls_output=$(ls)
     local ls2_output=$(ls ..)
-    
-    python3 $SCRIPT_DIR/generate_completition.py "$word" "$history" "$ls_output" "$ls2_output"
+
+    # Save the variables to a file instead of calling the Python script
+    {
+        echo "Given the current terminal line and command history, suggest a completion for the current command."
+        echo "Return completed terminal line, without any explanation or formatting."
+        echo "Current terminal line:" 
+        echo "'$word'"
+        echo "Command history:"
+        echo "'"
+        echo "$history"
+        echo "'"
+    } > $CONTEXT_FILE
 }
+
+_update_postdisplay() {
+    local word="$BUFFER"
+    suggestion=$(grep -i "^$word" "$OPTIONS_FILE" | head -n 1)
+    POSTDISPLAY="${suggestion#$BUFFER}"
+    zle redisplay
+}
+zle -N _update_postdisplay_widget _update_postdisplay
+
+# Function to run every second
+TRAPALRM() {
+    zle _update_postdisplay_widget
+}
+# Set the timer interval to 1 second
+TMOUT=1
+
 
 # Widget function for autosuggestions
 _autosuggestion_widget() {
-    suggestion=$(_generate_suggestions "$BUFFER")
-    
-    if [[ -n "$suggestion" ]]; then
-        # Display only the remaining part of the suggestion
-        POSTDISPLAY="${suggestion#$BUFFER}"
-    else
-        POSTDISPLAY=""
-    fi
-    
-    zle redisplay
+    _update_context "$BUFFER"
+    _update_postdisplay
 }
 
 # Widget function for autosuggestions
@@ -35,7 +55,6 @@ insert_autosuggestion() {
     
     zle redisplay
 }
-
 
 # Set up hooks to update suggestions as you type
 autoload -U add-zle-hook-widget
