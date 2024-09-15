@@ -39,7 +39,6 @@ insert_autosuggestion() {
 # Set up hooks to update suggestions as you type
 autoload -U add-zle-hook-widget
 add-zle-hook-widget line-init _autosuggestion_widget
-add-zle-hook-widget keymap-select _autosuggestion_widget
 add-zle-hook-widget zle-line-pre-redraw _autosuggestion_widget
 
 # Bind the widget to a key (e.g., right arrow)
