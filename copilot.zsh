@@ -36,7 +36,6 @@ insert_autosuggestion() {
     zle redisplay
 }
 
-
 # Set up hooks to update suggestions as you type
 autoload -U add-zle-hook-widget
 add-zle-hook-widget line-init _autosuggestion_widget
