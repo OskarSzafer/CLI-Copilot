@@ -1,21 +1,21 @@
-zsh
+
 /mnt/c/Users/oskar
-  771  python3 /mnt/c/Users/oskar/Documents/github/cli-copilot/generate_completition.py
-  772  source /mnt/c/Users/oskar/Documents/github/cli-copilot/completition.zsh
-  773  pkill python
-  774  sudo pkill python
-  775  zsh
-  776  sudo pkill python
-  777  source /mnt/c/Users/oskar/Documents/github/cli-copilot/completition.zsh
-  778  python3 /mnt/c/Users/oskar/Documents/github/cli-copilot/generate_completition.py
-  779  source /mnt/c/Users/oskar/Documents/github/cli-copilot/completition.zsh
-  780  zsh
-  781  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
-  782  zsh
-  783  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
-  784  zsh
-  785  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
-  786  echo $PWD
+  853  pgrep -c sh
+  854  pgrep -t zsh
+  855  pgrep -c zsh
+  856  pgrep -a zsh | grep $(tty) | wc -l
+  857  ps -eo pid,comm,tty,stat | grep -E 'zsh.*tty.*\+' | wc -l
+  858  ps -eo pid,comm,tty,stat
+  859  ps -eo pid,comm,tty,stat | grep -E 'zsh.*tty.*\+'
+  860  ps -eo pid,comm,tty,stat | grep -E 'zsh.'
+  861  ps -eo pid,comm,tty,stat | grep -E 'zsh.*\+'
+  862  ps -eo pid,comm,tty,stat | grep -E 'zsh.*\+' | wc -1
+  863  ps -eo pid,comm,tty,stat | grep -E 'zsh.*\+' | wc -l
+  864  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
+  865  zsh
+  866  sudo pkill python
+  867  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
+  868  ls -la | grep -i 'zsh'
 AppData
 Contacts
 Cookies
