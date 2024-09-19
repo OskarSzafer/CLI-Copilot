@@ -7,11 +7,11 @@ import google.generativeai as genai
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-OPTIONS_FILE_NAME = ".options"
-CONTEXT_FILE_NAME = ".context"
+OPTIONS_FILE = ".options"
+CONTEXT_FILE = ".context"
 
-OPTIONS_FILE = os.path.join(SCRIPT_DIR, OPTIONS_FILE_NAME)
-CONTEXT_FILE = os.path.join(SCRIPT_DIR, CONTEXT_FILE_NAME)
+OPTIONS_FILE_PATH = os.path.join(SCRIPT_DIR, OPTIONS_FILE)
+CONTEXT_FILE_PATH = os.path.join(SCRIPT_DIR, CONTEXT_FILE)
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -31,7 +31,7 @@ return completed command line prompt aleone with no explanation.
 
 
 def read_file():
-    with open(CONTEXT_FILE, 'r') as file:
+    with open(CONTEXT_FILE_PATH, 'r') as file:
         lines = file.readlines()
     
     current_prompt = lines[0].strip()
@@ -42,7 +42,7 @@ def read_file():
     return template.format(command_history=command_history, ls_output=ls_output, current_directory=current_directory, current_prompt=current_prompt)
 
 def save_output(output):
-    with open(OPTIONS_FILE, 'w') as file:
+    with open(OPTIONS_FILE_PATH, 'w') as file:
         file.write(output)
     print("updated")
 
@@ -52,7 +52,7 @@ def watch_file(check_interval, min_idle_time):
     while True:
         try:
             # Check the modification time of the file
-            current_modified_time = os.path.getmtime(CONTEXT_FILE)
+            current_modified_time = os.path.getmtime(CONTEXT_FILE_PATH)
             
             if current_modified_time != last_modified_time and (time.time() - current_modified_time) > min_idle_time:
                 prompt = read_file()

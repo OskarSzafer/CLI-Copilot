@@ -1,1 +1,1 @@
-ls -la | grep -i 'zsh' | wc -l
+source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh

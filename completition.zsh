@@ -3,21 +3,6 @@
 SCRIPT_DIR=${0:a:h}
 
 OPTIONS_FILE="${SCRIPT_DIR}/.options"
-CONTEXT_FILE="${SCRIPT_DIR}/.context"
-
-_update_context() {
-    # local his=$(history | tail -n 10)
-    local his=$(fc -l)
-
-    print -r "$BUFFER" > $CONTEXT_FILE
-    pwd >> $CONTEXT_FILE
-    print -r "$his" >> $CONTEXT_FILE
-    ls >> $CONTEXT_FILE
-}
-
-_update_context_buffer() {
-    sed -i "1s/.*/$(printf "%s" "${BUFFER:-}" | sed 's/[\/&]/\\&/g')/" "$CONTEXT_FILE"
-}
 
 _update_postdisplay() {
     suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)
@@ -33,17 +18,6 @@ TRAPALRM() {
 # Set the timer interval to 1 second
 TMOUT=1
 
-# Widget function for autosuggestions
-_autosuggestion_widget_newline() {
-    _update_context
-    _update_postdisplay
-}
-
-_autosuggestion_widget_buffer_change() {
-    _update_context_buffer
-    _update_postdisplay
-}
-
 # TODO: remove this
 insert_autosuggestion() {
     if [[ -n "$suggestion" ]]; then
@@ -56,8 +30,7 @@ insert_autosuggestion() {
 
 # Set up hooks to update suggestions as you type
 autoload -U add-zle-hook-widget
-add-zle-hook-widget line-init _autosuggestion_widget_newline
-add-zle-hook-widget zle-line-pre-redraw _autosuggestion_widget_buffer_change
+add-zle-hook-widget zle-line-pre-redraw _update_postdisplay
 
 # TODO: remove this
 # Bind the widget to a key (tab)
