@@ -4,8 +4,14 @@ import linecache
 
 import google.generativeai as genai
 
-OPTIONS_FILE=".options"
-CONTEXT_FILE=".context"
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+OPTIONS_FILE_NAME = ".options"
+CONTEXT_FILE_NAME = ".context"
+
+OPTIONS_FILE = os.path.join(SCRIPT_DIR, OPTIONS_FILE_NAME)
+CONTEXT_FILE = os.path.join(SCRIPT_DIR, CONTEXT_FILE_NAME)
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -38,41 +44,32 @@ def read_file():
 def save_output(output):
     with open(OPTIONS_FILE, 'w') as file:
         file.write(output)
+    print("updated")
 
 def watch_file(check_interval, min_idle_time):
-    # Get the initial modification time of the file
-    last_modified_time = os.path.getmtime(CONTEXT_FILE)
+    last_modified_time = 0
 
     while True:
-        # Check the modification time of the file
-        current_modified_time = os.path.getmtime(CONTEXT_FILE)
-        
-        if current_modified_time != last_modified_time and (time.time() - current_modified_time) > min_idle_time:
-            try:
+        try:
+            # Check the modification time of the file
+            current_modified_time = os.path.getmtime(CONTEXT_FILE)
+            
+            if current_modified_time != last_modified_time and (time.time() - current_modified_time) > min_idle_time:
                 prompt = read_file()
-            except Exception as e:
-                print(e)
-                continue
 
-            if not prompt:
-                continue
+                if not prompt:
+                    continue
 
-            try:
                 chat = model.start_chat(history=[])
                 response = chat.send_message(prompt)
                 completion = response.text.strip()
-            except Exception as e:
-                print(e)
-                continue
 
-            try:
                 save_output(completion)
-                print("updated")
                 
                 # Update the last modified time
                 last_modified_time = current_modified_time
-            except Exception as e:
-                print(e)
+        except Exception as e:
+            print(e)
         
         # Wait for the specified interval before checking again
         time.sleep(check_interval)

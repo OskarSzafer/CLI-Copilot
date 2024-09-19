@@ -1,0 +1,62 @@
+zsh
+/mnt/c/Users/oskar
+  771  python3 /mnt/c/Users/oskar/Documents/github/cli-copilot/generate_completition.py
+  772  source /mnt/c/Users/oskar/Documents/github/cli-copilot/completition.zsh
+  773  pkill python
+  774  sudo pkill python
+  775  zsh
+  776  sudo pkill python
+  777  source /mnt/c/Users/oskar/Documents/github/cli-copilot/completition.zsh
+  778  python3 /mnt/c/Users/oskar/Documents/github/cli-copilot/generate_completition.py
+  779  source /mnt/c/Users/oskar/Documents/github/cli-copilot/completition.zsh
+  780  zsh
+  781  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
+  782  zsh
+  783  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
+  784  zsh
+  785  source /mnt/c/Users/oskar/Documents/github/cli-copilot/copilot.zsh
+  786  echo $PWD
+AppData
+Contacts
+Cookies
+Dane aplikacji
+Desktop
+Documents
+Downloads
+Favorites
+IntelGraphicsProfiles
+Links
+Menu Start
+Moje dokumenty
+Music
+My project
+NTUSER.DAT
+NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TM.blf
+NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000001.regtrans-ms
+NTUSER.DAT{a2332f18-cdbf-11ec-8680-002248483d79}.TMContainer00000000000000000002.regtrans-ms
+NetHood
+OneDrive
+Pictures
+PrintHood
+Recent
+Saved Games
+Searches
+SendTo
+Szablony
+Tracing
+Ustawienia lokalne
+Videos
+VirtualBox VMs
+a.out
+ansel
+h
+miniconda3
+nohup.out
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
+przygody rubika
+regwizard.log
+sanct.log
+source
+tab.csv
