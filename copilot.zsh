@@ -5,6 +5,11 @@ SCRIPT_DIR=${0:a:h}
 PYTHON_SCRIPT="generate_completition.py"
 COMPLETITION_SCRIPT="completition.zsh"
 CONTEXT_SCRIPT="context.zsh"
+OPTIONS_FILE=".tmp/.options"
+CONTEXT_FILE=".tmp/.context"
+
+touch "$SCRIPT_DIR/$OPTIONS_FILE"
+touch "$SCRIPT_DIR/$CONTEXT_FILE"
 
 # Check if the Python script is already running
 if pgrep -f "$PYTHON_SCRIPT" > /dev/null; then
@@ -23,8 +28,14 @@ kill_python_script() {
     fi
 }
 
+clear_files() {
+    rm -f "$SCRIPT_DIR/$OPTIONS_FILE"
+    rm -f "$SCRIPT_DIR/$CONTEXT_FILE"
+}
+
 # Set up trap to kill Python script when the last terminal is closed
 trap kill_python_script EXIT
+trap clear_files
 
 source "$SCRIPT_DIR/$COMPLETITION_SCRIPT"
 source "$SCRIPT_DIR/$CONTEXT_SCRIPT"

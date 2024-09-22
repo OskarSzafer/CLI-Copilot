@@ -7,8 +7,8 @@ import google.generativeai as genai
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-OPTIONS_FILE = ".options"
-CONTEXT_FILE = ".context"
+OPTIONS_FILE = ".tmp/.options"
+CONTEXT_FILE = ".tmp/.context"
 
 OPTIONS_FILE_PATH = os.path.join(SCRIPT_DIR, OPTIONS_FILE)
 CONTEXT_FILE_PATH = os.path.join(SCRIPT_DIR, CONTEXT_FILE)
