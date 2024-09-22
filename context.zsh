@@ -5,8 +5,10 @@ SCRIPT_DIR=${0:a:h}
 CONTEXT_FILE="${SCRIPT_DIR}/.context"
 
 _update_context() {
-    # local his=$(history | tail -n 10)
-    local his=$(fc -l)
+    # local his=$(history | tail -n 16)
+    # local his=$(fc -l)
+    local his=$(history | grep -v '^[[:space:]]*[0-9]\+\*' | tail -16)
+
 
     print -r "$BUFFER" > $CONTEXT_FILE
     pwd >> $CONTEXT_FILE
