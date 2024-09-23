@@ -6,12 +6,10 @@ import google.generativeai as genai
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+TMP_FILES_DIR = os.path.join(SCRIPT_DIR, ".tmp")
 
-OPTIONS_FILE = ".tmp/.options"
-CONTEXT_FILE = ".tmp/.context"
-
-OPTIONS_FILE_PATH = os.path.join(SCRIPT_DIR, OPTIONS_FILE)
-CONTEXT_FILE_PATH = os.path.join(SCRIPT_DIR, CONTEXT_FILE)
+MIN_IDLE_TIME = 0.3
+CHECK_INTERVAL = 0.1
 
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=GOOGLE_API_KEY)
@@ -30,8 +28,8 @@ return completed command line prompt aleone with no explanation.
 """
 
 
-def read_file():
-    with open(CONTEXT_FILE_PATH, 'r') as file:
+def read_file(file_path):
+    with open(file_path, 'r') as file:
         lines = file.readlines()
     
     current_prompt = lines[0].strip()
@@ -41,39 +39,46 @@ def read_file():
 
     return template.format(command_history=command_history, ls_output=ls_output, current_directory=current_directory, current_prompt=current_prompt)
 
-def save_output(output):
-    with open(OPTIONS_FILE_PATH, 'w') as file:
+def save_output(file_path, output):
+    with open(file_path, 'w') as file:
         file.write(output)
     print("updated")
 
-def watch_file(check_interval, min_idle_time):
-    last_modified_time = 0
+def process_file(context_file_path, option_file_path):
+    current_modified_time = os.path.getmtime(context_file_path)
+    last_modified_time = os.path.getmtime(option_file_path)
 
+    if current_modified_time > last_modified_time and (time.time() - current_modified_time) > MIN_IDLE_TIME:
+        prompt = read_file(context_file_path)
+
+        if not prompt:
+            return
+
+        chat = model.start_chat(history=[])
+        response = chat.send_message(prompt)
+        completion = response.text.strip()
+
+        save_output(option_file_path, completion)
+
+def process_directory(directory):
+    for root, dirs, files in os.walk(directory):
+        for context_file in files:
+            if ".context" in context_file:
+                context_file_path = os.path.join(directory, context_file)
+                option_file_path = os.path.join(directory, context_file.replace(".context", ".options"))
+
+                try:
+                    process_file(context_file_path, option_file_path)
+                except Exception as e:
+                    print(e)
+
+def watch_files():
     while True:
-        try:
-            # Check the modification time of the file
-            current_modified_time = os.path.getmtime(CONTEXT_FILE_PATH)
-            
-            if current_modified_time != last_modified_time and (time.time() - current_modified_time) > min_idle_time:
-                prompt = read_file()
-
-                if not prompt:
-                    continue
-
-                chat = model.start_chat(history=[])
-                response = chat.send_message(prompt)
-                completion = response.text.strip()
-
-                save_output(completion)
-                
-                # Update the last modified time
-                last_modified_time = current_modified_time
-        except Exception as e:
-            print(e)
+        process_directory(TMP_FILES_DIR)
         
         # Wait for the specified interval before checking again
-        time.sleep(check_interval)
+        time.sleep(CHECK_INTERVAL)
 
 
 if __name__ == "__main__":
-    watch_file(0.1, 0.3)
+    watch_files()

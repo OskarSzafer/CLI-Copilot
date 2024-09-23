@@ -2,7 +2,7 @@
 # Get the directory of the script
 SCRIPT_DIR=${0:a:h}
 
-CONTEXT_FILE="${SCRIPT_DIR}/.context"
+CONTEXT_FILE="${SCRIPT_DIR}/.tmp/.context$$"
 
 _update_context() {
     # local his=$(history | tail -n 16)
