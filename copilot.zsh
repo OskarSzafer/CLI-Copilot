@@ -6,14 +6,14 @@ PYTHON_SCRIPT="generate_completition.py"
 COMPLETITION_SCRIPT="completition.zsh"
 CONTEXT_SCRIPT="context.zsh"
 
-OPTIONS_FILE=".tmp/.options$$"
-CONTEXT_FILE=".tmp/.context$$"
+OPTIONS_FILE="$SCRIPT_DIR/.tmp/.options$$"
+CONTEXT_FILE="$SCRIPT_DIR/.tmp/.context$$"
 
-touch "$SCRIPT_DIR/$OPTIONS_FILE"
-touch "$SCRIPT_DIR/$CONTEXT_FILE"
+touch "$OPTIONS_FILE"
+touch "$CONTEXT_FILE"
 
 # Check if the Python script is already running
-if pgrep -f "$PYTHON_SCRIPT" > /dev/null; then
+if pgrep -f "$SCRIPT_DIR/$PYTHON_SCRIPT" > /dev/null; then
     # Script is already running, do nothing
 else
     # Start the Python script in the background
@@ -22,8 +22,8 @@ fi
 
 # Function to kill the Python script
 kill_python_script() {
-    rm -f "$SCRIPT_DIR/$OPTIONS_FILE"
-    rm -f "$SCRIPT_DIR/$CONTEXT_FILE"
+    rm -f "$OPTIONS_FILE"
+    rm -f "$CONTEXT_FILE"
     # Check if there are no other zsh sessions open
     if [ $(ps -eo pid,comm,tty,stat | grep -E 'zsh.*\+' | wc -l) -eq 1 ]; then
         PYTHON_PID=$(pgrep -f "$PYTHON_SCRIPT")
