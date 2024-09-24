@@ -11,6 +11,12 @@ LOG_FILE="$SCRIPT_DIR/error.log"
 OPTIONS_FILE="$SCRIPT_DIR/.tmp/.options_$$"
 CONTEXT_FILE="$SCRIPT_DIR/.tmp/.context_$$"
 
+if ! mountpoint -q "$SCRIPT_DIR/.tmp"; then
+    # Mount the tmpfs filesystem
+    sudo mount -t tmpfs -o size=100M tmpfs "$SCRIPT_DIR/.tmp"
+    echo "Mounted tmpfs filesystem"
+fi
+
 touch "$OPTIONS_FILE"
 touch "$CONTEXT_FILE"
 
@@ -26,8 +32,12 @@ fi
 cleanup() {
     # Check if there are no other zsh sessions open
     if [ $(ps -eo pid,comm,tty,stat | grep -E 'zsh.*\+' | wc -l) -eq 1 ]; then
+        # Kill the Python script
         PYTHON_PID=$(pgrep -f "$PYTHON_SCRIPT")
         kill "$PYTHON_PID"
+
+        # Unmount the tmpfs filesystem
+        umount "$SCRIPT_DIR/.tmp"
     fi
 
     rm -f "$OPTIONS_FILE"
