@@ -5,10 +5,7 @@ SCRIPT_DIR=${0:a:h}
 CONTEXT_FILE="${SCRIPT_DIR}/.tmp/.context$$"
 
 _update_context() {
-    # local his=$(history | tail -n 16)
-    # local his=$(fc -l)
     local his=$(history | grep -v '^[[:space:]]*[0-9]\+\*' | tail -16)
-
 
     print -r "$BUFFER" > $CONTEXT_FILE
     pwd >> $CONTEXT_FILE
@@ -16,9 +13,11 @@ _update_context() {
     ls >> $CONTEXT_FILE
 }
 
+
 _update_context_buffer() {
     sed -i "1s/.*/$(printf "%s" "${BUFFER:-}" | sed 's/[\/&]/\\&/g')/" "$CONTEXT_FILE"
 }
+
 
 # Set up hooks to update suggestions as you type
 autoload -U add-zle-hook-widget
