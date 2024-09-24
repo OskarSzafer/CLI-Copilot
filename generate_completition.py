@@ -1,12 +1,14 @@
 import os
 import sys
 import time
+from pathlib import Path
 
 import google.generativeai as genai
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 TMP_FILES_DIR = os.path.join(SCRIPT_DIR, ".tmp")
+tmp_files_dir_path = Path(TMP_FILES_DIR)
 
 MIN_IDLE_TIME = 0.3
 CHECK_INTERVAL = 0.1
@@ -67,16 +69,14 @@ def process_file(context_file_path, option_file_path): #TODO: better function na
 
 
 def process_directory(directory):
-    for root, dirs, files in os.walk(directory): # TODO: if posible check files names in one for (os.walk) (path lib może pomoże)
-        for f in files:
-            if ".context" in f:
-                context_file_path = os.path.join(directory, f)
-                option_file_path = os.path.join(directory, f.replace(".context", ".options"))
+    for f in tmp_files_dir_path.glob("*.context*"):
+        context_file_path = os.path.join(directory, f.name)
+        option_file_path = os.path.join(directory, f.name.replace(".context", ".options"))
 
-                try:
-                    process_file(context_file_path, option_file_path)
-                except Exception as e:
-                    sys.stderr.write(str(e) + "\n")
+        try:
+            process_file(context_file_path, option_file_path)
+        except Exception as e:
+            sys.stderr.write(str(e) + "\n")
 
 
 def watch_files():
