@@ -29,7 +29,7 @@ return completed command line prompt aleone with no explanation.
 """
 
 
-def read_file(file_path):
+def parse_file(file_path):
     with open(file_path, 'r') as file:
         lines = file.readlines()
     
@@ -46,17 +46,17 @@ def read_file(file_path):
         )
 
 
-def save_output(file_path, output):
+def write_to_file(file_path, output):
     with open(file_path, 'w') as file:
         file.write(output)
 
 
-def process_file(context_file_path, option_file_path): #TODO: better function names
-    current_modified_time = os.path.getmtime(context_file_path) #TODO: change var names
-    last_modified_time = os.path.getmtime(option_file_path)
+def serve_terminal_session(context_file_path, option_file_path):
+    context_modification_time = os.path.getmtime(context_file_path)
+    options_modification_time = os.path.getmtime(option_file_path)
 
-    if current_modified_time > last_modified_time and (time.time() - current_modified_time) > MIN_IDLE_TIME:
-        prompt = read_file(context_file_path)
+    if context_modification_time > options_modification_time and (time.time() - context_modification_time) > MIN_IDLE_TIME:
+        prompt = parse_file(context_file_path)
 
         if not prompt:
             return
@@ -65,23 +65,23 @@ def process_file(context_file_path, option_file_path): #TODO: better function na
         response = chat.send_message(prompt)
         completion = response.text.strip()
 
-        save_output(option_file_path, completion)
+        write_to_file(option_file_path, completion)
 
 
-def process_directory(directory):
+def handle_tmp_files(directory):
     for f in tmp_files_dir_path.glob("*.context*"):
         context_file_path = os.path.join(directory, f.name)
         option_file_path = os.path.join(directory, f.name.replace(".context", ".options"))
 
         try:
-            process_file(context_file_path, option_file_path)
+            serve_terminal_session(context_file_path, option_file_path)
         except Exception as e:
             sys.stderr.write(str(e) + "\n")
 
 
 def watch_files():
     while True:
-        process_directory(TMP_FILES_DIR)
+        handle_tmp_files(TMP_FILES_DIR)
         
         # Wait for the specified interval before checking again
         time.sleep(CHECK_INTERVAL)

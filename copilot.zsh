@@ -8,8 +8,8 @@ CONTEXT_SCRIPT="context.zsh"
 
 LOG_FILE="$SCRIPT_DIR/error.log"
 
-OPTIONS_FILE="$SCRIPT_DIR/.tmp/.options$$"
-CONTEXT_FILE="$SCRIPT_DIR/.tmp/.context$$"
+OPTIONS_FILE="$SCRIPT_DIR/.tmp/.options_$$"
+CONTEXT_FILE="$SCRIPT_DIR/.tmp/.context_$$"
 
 touch "$OPTIONS_FILE"
 touch "$CONTEXT_FILE"

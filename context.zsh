@@ -2,7 +2,7 @@
 # Get the directory of the script
 SCRIPT_DIR=${0:a:h}
 
-CONTEXT_FILE="${SCRIPT_DIR}/.tmp/.context$$"
+CONTEXT_FILE="${SCRIPT_DIR}/.tmp/.context_$$"
 
 _update_context() {
     local his=$(history | grep -v '^[[:space:]]*[0-9]\+\*' | tail -16)
