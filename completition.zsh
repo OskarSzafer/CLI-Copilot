@@ -2,7 +2,7 @@
 # Get the directory of the script
 SCRIPT_DIR=${0:a:h}
 
-OPTIONS_FILE="${SCRIPT_DIR}/.tmp/.options_$$"
+OPTIONS_FILE=$(find "${SCRIPT_DIR}/.tmp/" -name ".options_$$.??????" | head -n 1)
 
 _update_postdisplay() {
     suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)

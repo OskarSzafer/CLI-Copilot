@@ -8,17 +8,8 @@ CONTEXT_SCRIPT="context.zsh"
 
 LOG_FILE="$SCRIPT_DIR/error.log"
 
-OPTIONS_FILE="$SCRIPT_DIR/.tmp/.options_$$"
-CONTEXT_FILE="$SCRIPT_DIR/.tmp/.context_$$"
-
-if ! mountpoint -q "$SCRIPT_DIR/.tmp"; then
-    # Mount the tmpfs filesystem
-    sudo mount -t tmpfs -o size=100M tmpfs "$SCRIPT_DIR/.tmp"
-    echo "Mounted tmpfs filesystem"
-fi
-
-touch "$OPTIONS_FILE"
-touch "$CONTEXT_FILE"
+OPTIONS_FILE=$(mktemp "$SCRIPT_DIR/.tmp/.options_$$.XXXXXX")
+CONTEXT_FILE=$(mktemp "$SCRIPT_DIR/.tmp/.context_$$.XXXXXX")
 
 # Check if the Python script is already running
 if pgrep -f "$SCRIPT_DIR/$PYTHON_SCRIPT" > /dev/null; then
@@ -35,9 +26,6 @@ cleanup() {
         # Kill the Python script
         PYTHON_PID=$(pgrep -f "$PYTHON_SCRIPT")
         kill "$PYTHON_PID"
-
-        # Unmount the tmpfs filesystem
-        umount "$SCRIPT_DIR/.tmp"
     fi
 
     rm -f "$OPTIONS_FILE"

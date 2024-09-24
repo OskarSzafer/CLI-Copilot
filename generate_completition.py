@@ -71,7 +71,9 @@ def serve_terminal_session(context_file_path, option_file_path):
 def handle_tmp_files(directory):
     for f in tmp_files_dir_path.glob("*.context*"):
         context_file_path = os.path.join(directory, f.name)
-        option_file_path = os.path.join(directory, f.name.replace(".context", ".options"))
+
+        for option_f in tmp_files_dir_path.glob(f.name.replace(".context", ".options")[:-6] + "*"):
+            option_file_path = os.path.join(directory, option_f)
 
         try:
             serve_terminal_session(context_file_path, option_file_path)
