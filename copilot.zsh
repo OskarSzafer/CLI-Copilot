@@ -8,8 +8,9 @@ CONTEXT_SCRIPT="context.zsh"
 
 LOG_FILE="$SCRIPT_DIR/error.log"
 
-OPTIONS_FILE=$(mktemp "$SCRIPT_DIR/.tmp/.options_$$.XXXXXX")
-CONTEXT_FILE=$(mktemp "$SCRIPT_DIR/.tmp/.context_$$.XXXXXX")
+pid=$$
+OPTIONS_FILE=$(mktemp "$SCRIPT_DIR/.tmp/.options_${pid}_XXXXXX")
+CONTEXT_FILE=$(mktemp "$SCRIPT_DIR/.tmp/.context_${pid}_XXXXXX")
 
 # Check if the Python script is already running
 if pgrep -f "$SCRIPT_DIR/$PYTHON_SCRIPT" > /dev/null; then
