@@ -2,8 +2,8 @@
 # Get the directory of the script
 SCRIPT_DIR=${0:a:h}
 
-PYTHON_SCRIPT="generate_completition.py"
-COMPLETITION_SCRIPT="completition.zsh"
+PYTHON_SCRIPT="generate_completion.py"
+COMPLETION_SCRIPT="completion.zsh"
 CONTEXT_SCRIPT="context.zsh"
 
 LOG_FILE="$SCRIPT_DIR/error.log"
@@ -36,5 +36,5 @@ cleanup() {
 # Set up trap to kill Python script when the last terminal is closed
 trap cleanup EXIT
 
-source "$SCRIPT_DIR/$COMPLETITION_SCRIPT"
+source "$SCRIPT_DIR/$COMPLETION_SCRIPT"
 source "$SCRIPT_DIR/$CONTEXT_SCRIPT"

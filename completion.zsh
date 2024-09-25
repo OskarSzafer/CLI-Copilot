@@ -5,16 +5,16 @@ SCRIPT_DIR=${0:a:h}
 pid=$$
 OPTIONS_FILE=$(find "${SCRIPT_DIR}/.tmp/" -name ".options_${pid}_??????" | head -n 1)
 
-_update_postdisplay() {
+update_postdisplay() {
     suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)
     POSTDISPLAY="${suggestion#$BUFFER}"
     zle redisplay
 }
-zle -N _update_postdisplay_widget _update_postdisplay
+zle -N update_postdisplay_widget update_postdisplay
 
 # Function to run every second
 TRAPALRM() {
-    zle _update_postdisplay_widget
+    zle update_postdisplay_widget
 }
 # Set the timer interval to 1 second
 TMOUT=1
@@ -31,7 +31,7 @@ insert_autosuggestion() {
 
 # Set up hooks to update suggestions as you type
 autoload -U add-zle-hook-widget
-add-zle-hook-widget zle-line-pre-redraw _update_postdisplay
+add-zle-hook-widget zle-line-pre-redraw update_postdisplay
 
 # TODO: remove this
 # Bind the widget to a key (tab)
