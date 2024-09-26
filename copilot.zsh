@@ -17,7 +17,7 @@ if pgrep -f "$SCRIPT_DIR/$PYTHON_SCRIPT" > /dev/null; then
     # Script is already running, do nothing
 else
     # Start the Python script in the background
-    $(nohup python3 "$SCRIPT_DIR/$PYTHON_SCRIPT" >/dev/null 2>>"$LOG_FILE" &)
+    $(nohup $SCRIPT_DIR/venv/bin/python "$SCRIPT_DIR/$PYTHON_SCRIPT" >/dev/null 2>>"$LOG_FILE" &)
 fi
 
 # Function to kill the Python script
