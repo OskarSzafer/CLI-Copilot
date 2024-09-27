@@ -15,7 +15,7 @@ _zsh_autosuggest_strategy_my_custom_suggestion() {
 
     # Return the untyped part of the suggestion
     if [[ -n "$suggestion" && "$suggestion" != "$buffer" ]]; then
-        echo "${suggestion#$buffer}"
+        echo "${suggestion}"
     fi
 }
 
