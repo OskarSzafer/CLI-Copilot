@@ -5,35 +5,18 @@ SCRIPT_DIR=${0:a:h}
 pid=$$
 OPTIONS_FILE=$(find "${SCRIPT_DIR}/.tmp/" -name ".options_${pid}_??????" | head -n 1)
 
-update_postdisplay() {
-    suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)
-    POSTDISPLAY="${suggestion#$BUFFER}"
-    zle redisplay
-}
-zle -N update_postdisplay_widget update_postdisplay
+# Custom autosuggestion function
+_zsh_autosuggest_strategy_my_custom_suggestion() {
+    local buffer=$1
+    local suggestion
 
-# Function to run every second
-TRAPALRM() {
-    zle update_postdisplay_widget
-}
-# Set the timer interval to 1 second
-TMOUT=1
+    # Find the first matching suggestion
+    suggestion=$(grep -E "^${buffer}.*" "$OPTIONS_FILE" | head -n1)
 
-# TODO: remove this
-insert_autosuggestion() {
-    if [[ -n "$suggestion" ]]; then
-        # Insert the remaining part of the suggestion into the line
-        LBUFFER+="${suggestion#$BUFFER}"
+    # Return the untyped part of the suggestion
+    if [[ -n "$suggestion" && "$suggestion" != "$buffer" ]]; then
+        echo "${suggestion#$buffer}"
     fi
-    
-    zle redisplay
 }
 
-# Set up hooks to update suggestions as you type
-autoload -U add-zle-hook-widget
-add-zle-hook-widget zle-line-pre-redraw update_postdisplay
-
-# TODO: remove this
-# Bind the widget to a key (tab)
-zle -N insert_autosuggestion_widget insert_autosuggestion
-bindkey '^I' insert_autosuggestion_widget
+ZSH_AUTOSUGGEST_STRATEGY=(my_custom_suggestion history)
