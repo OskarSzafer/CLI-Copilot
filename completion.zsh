@@ -5,18 +5,23 @@ SCRIPT_DIR=${0:a:h}
 pid=$$
 OPTIONS_FILE=$(find "${SCRIPT_DIR}/.tmp/" -name ".options_${pid}_??????" | head -n 1)
 
-# Custom autosuggestion function
 _zsh_autosuggest_strategy_my_custom_suggestion() {
-    local buffer=$1
-    local suggestion
+    #emulate -L zsh
+    #setopt EXTENDED_GLOB
 
-    # Find the first matching suggestion
-    suggestion=$(grep -E "^${buffer}.*" "$OPTIONS_FILE" | head -n1)
-
-    # Return the untyped part of the suggestion
-    if [[ -n "$suggestion" && "$suggestion" != "$buffer" ]]; then
-        echo "${suggestion}"
-    fi
+    # If a match is found, set it as the suggestion
+    typeset -g suggestion=$(cat "$OPTIONS_FILE")
+    
+    #local prefix="${1//(#m)[\\*?[\]<>()|^~#]/\\$MATCH}"
+    #local suggestion_match=$(grep -m 1 "^$prefix" "$OPTIONS_FILE")
+    #typeset -g suggestion=$suggestion_match
 }
 
-ZSH_AUTOSUGGEST_STRATEGY=(my_custom_suggestion history)
+# Function to run every second
+TRAPALRM() {
+    zle autosuggest-fetch
+}
+# Set the timer interval to 1 second
+TMOUT=1
+
+export ZSH_AUTOSUGGEST_STRATEGY=(my_custom_suggestion $ZSH_AUTOSUGGEST_STRATEGY)
