@@ -19,7 +19,8 @@ _zsh_autosuggest_strategy_my_custom_suggestion() {
 
 # Function to run every second
 TRAPALRM() {
-    zle autosuggest-fetch
+    # zle autosuggest-fetch
+    _zsh_autosuggest_invoke_original_widget "clear"
 }
 # Set the timer interval to 1 second
 TMOUT=1
