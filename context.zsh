@@ -1,10 +1,8 @@
 #!/bin/zsh
-# Get the directory of the script
-SCRIPT_DIR=${0:a:h}
 
-pid=$$
 CONTEXT_FILE=$(find "${SCRIPT_DIR}/.tmp/" -name ".context_${pid}_??????" | head -n 1)
 
+# Update the context file
 update_context() {
     local his=$(history | grep -v '^[[:space:]]*[0-9]\+\*' | tail -16)
 
@@ -15,6 +13,7 @@ update_context() {
 }
 
 
+# Update the context file with current line buffer
 update_context_buffer() {
     sed -i "1s/.*/$(printf "%s" "${BUFFER:-}" | sed 's/[\/&]/\\&/g')/" "$CONTEXT_FILE"
 }
