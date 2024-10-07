@@ -7,6 +7,8 @@ import google.generativeai as genai
 
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Directory to store temporary files, used to communicate with the terminal
 TMP_FILES_DIR = os.path.join(SCRIPT_DIR, ".tmp")
 tmp_files_dir_path = Path(TMP_FILES_DIR)
 
@@ -46,11 +48,6 @@ def parse_file(file_path):
         )
 
 
-def write_to_file(file_path, output):
-    with open(file_path, 'w') as file:
-        file.write(output)
-
-
 def serve_terminal_session(context_file_path, option_file_path):
     context_modification_time = os.path.getmtime(context_file_path)
     options_modification_time = os.path.getmtime(option_file_path)
@@ -65,7 +62,8 @@ def serve_terminal_session(context_file_path, option_file_path):
         response = chat.send_message(prompt)
         completion = response.text.strip()
 
-        write_to_file(option_file_path, completion)
+        with open(option_file_path, 'w') as file:
+            file.write(completion)
 
 
 def handle_tmp_files(directory):
@@ -85,7 +83,7 @@ def watch_files():
     while True:
         handle_tmp_files(TMP_FILES_DIR)
         
-        # Wait for the specified interval before checking again
+        # Limit frequency of checking for chenges
         time.sleep(CHECK_INTERVAL)
 
 
