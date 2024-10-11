@@ -1,11 +1,31 @@
 #!/bin/zsh
 
 OPTIONS_FILE=$(find "${SCRIPT_DIR}/.tmp/" -name ".options_${pid}_??????" | head -n 1)
+previous_suggestion=""
+
 
 # Define a custom strategy for zsh-autosuggest
 _zsh_autosuggest_strategy_my_custom_suggestion() {
-    typeset -g suggestion=$(cat "$OPTIONS_FILE" | head -n 1)
+    typeset -g suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)
 }
+
+
+_update_postdisplay() {
+    POSTDISPLAY="${suggestion#$BUFFER}"
+    zle redisplay
+}
+zle -N _update_postdisplay_widget _update_postdisplay
+
+
+TRAPALRM() {
+    _zsh_autosuggest_strategy_my_custom_suggestion
+    if [[ -n "$suggestion" && "$suggestion" != "$previous_suggestion" ]]; then
+        zle _update_postdisplay_widget
+        previous_suggestion="$suggestion"
+    fi
+}
+# Set the timer interval to 1 second
+TMOUT=1
 
 
 # Add as the first strategy to zsh-autosuggest plugin
