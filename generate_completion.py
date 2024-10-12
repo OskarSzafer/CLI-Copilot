@@ -20,12 +20,12 @@ model = genai.GenerativeModel("gemini-1.5-flash")
 
 prompt_template = """
 You are command line copilot.
-Command line history for context:
+Use this command line history to better understand the user's expectations:
 {command_history}
-Output of ls command:
+Use this output of the 'ls' commnad to better fit generated completion:
 {ls_output}
-Current working dirrectory: {current_directory}
-Curremt command line prompt: {current_prompt}
+Current working directory: {current_directory}
+Current command line prompt: {current_prompt}
 Propose how current prompt should be completed,
 return completed command line prompt aleone with no explanation.
 """
@@ -53,7 +53,7 @@ def serve_terminal_session(context_file_path, option_file_path):
     options_modification_time = os.path.getmtime(option_file_path)
 
     if (
-        context_modification_time > options_modification_time
+        context_modification_time >= options_modification_time
         and (time.time() - context_modification_time) > MIN_IDLE_TIME
     ):
         prompt = parse_file(context_file_path)
