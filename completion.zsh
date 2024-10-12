@@ -5,7 +5,7 @@ previous_suggestion=""
 
 # Define a custom strategy for zsh-autosuggest
 _zsh_autosuggest_strategy_my_custom_suggestion() {
-    typeset -g suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)
+    typeset -g suggestion=$(grep -i "^$(_zsh_autosuggest_escape_command "${BUFFER:-}")" "$OPTIONS_FILE" | head -n 1)
 }
 
 _update_postdisplay() {
