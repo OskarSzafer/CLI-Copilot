@@ -20,7 +20,6 @@ if ! pgrep -f "$PYTHON_SCRIPT" > /dev/null; then
     $(nohup $SCRIPT_DIR/venv/bin/python "$PYTHON_SCRIPT" >/dev/null 2>>"$LOG_FILE" &)
 fi
 
-
 cleanup() {
     # Check if there are no other zsh sessions open
     if [ $(ps -eo pid,comm,tty,stat | grep -E 'zsh.*\+' | wc -l) -eq 1 ]; then

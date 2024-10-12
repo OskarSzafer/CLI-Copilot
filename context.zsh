@@ -12,7 +12,6 @@ update_context() {
     ls >> $CONTEXT_FILE
 }
 
-
 # Update the context file with current line buffer
 update_context_buffer() {
     sed -i "1s/.*/$(printf "%s" "${BUFFER:-}" | sed 's/[\/&]/\\&/g')/" "$CONTEXT_FILE"
