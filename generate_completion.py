@@ -2,6 +2,7 @@ import os
 import sys
 import time
 from pathlib import Path
+from datetime import datetime
 
 import google.generativeai as genai
 
@@ -81,7 +82,8 @@ def handle_tmp_files(directory):
         try:
             serve_terminal_session(context_file_path, option_file_path)
         except Exception as e:
-            sys.stderr.write(str(e) + "\n")
+            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            sys.stderr.write(f"{timestamp} \t ERROR: {str(e)}\n")
 
 
 def watch_files():

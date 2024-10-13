@@ -1,4 +1,6 @@
-# CLI-Copilot
+# zsh-copilot
+
+_Copilot-like autosuggestions generation for zsh._
 
 in project root directory mk python venv\
 ```python -m venv venv```\
