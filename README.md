@@ -2,7 +2,7 @@
 
 _Copilot-like autosuggestions generation for zsh._
 
-Extends the functionality of [zsh-autocompletion](https://github.com/zsh-users/zsh-autosuggestions) plugin, providing an additional LLM-based autosuggest strategy and autosuggestion refreshment.
+Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) plugin, providing an additional LLM-based autosuggest strategy and autosuggestion refreshment.
 
 
 ## Installation
@@ -35,5 +35,5 @@ Extends the functionality of [zsh-autocompletion](https://github.com/zsh-users/z
 ## Requirements
 
 - Zsh v4.3.11 or later
-- [zsh-autocompletion](https://github.com/zsh-users/zsh-autosuggestions) v0.7.0
+- zsh-autosuggestions v0.7.0
 - python v3.9 or later
