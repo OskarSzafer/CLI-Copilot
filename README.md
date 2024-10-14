@@ -36,6 +36,7 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
 - Zsh v4.3.11 or later
 - Zsh-autosuggestions v0.7.0
 - Python 3.9 or later
+- Python virtual environment (venv)
 
 
 ## Roadmap
