@@ -26,17 +26,16 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
     source ~/path/to/repository/copilot.zsh
     ```
 
-    _You can get your API-key on:_\
-    _https://aistudio.google.com/app/apikey_
+    _You can get your API-key on: https://aistudio.google.com/app/apikey_
 
-4. Start new terminal sesion.
+4. Start a new terminal sesion.
 
 
 ## Requirements
 
 - Zsh v4.3.11 or later
 - Zsh-autosuggestions v0.7.0
-- Python v3.9 or later
+- Python 3.9 or later
 
 
 ## Roadmap
