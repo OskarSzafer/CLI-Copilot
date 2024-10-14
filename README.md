@@ -2,14 +2,38 @@
 
 _Copilot-like autosuggestions generation for zsh._
 
-in project root directory mk python venv\
-```python -m venv venv```\
-install requirements in venv:\
-```./venv/bin/pip install -r requirements.txt```\
+Extends the functionality of [zsh-autocompletion](https://github.com/zsh-users/zsh-autosuggestions), providing an additional LLM-based autosuggest strategy and autosuggestion refreshment.
 
-in your ~/.zshrc add\
-```source/path/to/repository/copilot.zsh```\
-and add env variable, for example by adding to ~/.zshrc:\
-```export GOOGLE_API_KEY=<your_token>```\
-You can generate token on:\
-https://aistudio.google.com/app/apikey?hl=pl
+
+## Installation
+
+1. Clone project repository to location of choice:
+
+    ```sh
+    git clone https://github.com/OskarSzafer/CLI-Copilot.git
+    ```
+
+2. Inside project repository create python venv and install requirements:
+
+    ```sh
+    python -m venv venv && ./venv/bin/pip install -r requirements.txt
+    ```
+
+3. Source main script, and export API-key by adding to ```~/.zshrc``` following lines:
+
+    ```sh
+    source ~/path/to/repository/copilot.zsh
+    export GOOGLE_API_KEY=<your_token>
+    ```
+
+    _You can get your API-key on:_\
+    _https://aistudio.google.com/app/apikey_
+
+4. Start new terminal sesion.
+
+
+## Requirements
+
+- Zsh v4.3.11 or later
+- zsh-autosuggestions v0.7.0
+- python v3.9 or later
