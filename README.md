@@ -22,8 +22,8 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
 3. Source main script, and export API-key by adding to ```~/.zshrc``` following lines:
 
     ```sh
-    source ~/path/to/repository/copilot.zsh
     export GOOGLE_API_KEY=<your_token>
+    source ~/path/to/repository/copilot.zsh
     ```
 
     _You can get your API-key on:_\
@@ -35,8 +35,8 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
 ## Requirements
 
 - Zsh v4.3.11 or later
-- zsh-autosuggestions v0.7.0
-- python v3.9 or later
+- Zsh-autosuggestions v0.7.0
+- Python v3.9 or later
 
 
 ## Roadmap
