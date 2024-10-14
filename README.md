@@ -13,7 +13,7 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
     git clone https://github.com/OskarSzafer/CLI-Copilot.git
     ```
 
-2. Inside project repository create python venv and install requirements:
+2. Inside project repository create python ```venv``` and install requirements:
 
     ```sh
     python -m venv venv && ./venv/bin/pip install -r requirements.txt
@@ -36,7 +36,6 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
 - Zsh v4.3.11 or later
 - Zsh-autosuggestions v0.7.0
 - Python 3.9 or later
-- Python virtual environment (venv)
 
 
 ## Roadmap
