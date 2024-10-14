@@ -37,3 +37,11 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
 - Zsh v4.3.11 or later
 - zsh-autosuggestions v0.7.0
 - python v3.9 or later
+
+
+## Roadmap
+
+
+- Improvment of special character handling
+- Resolving a conflict with the history widget
+- Integration of open-source, local LLM
