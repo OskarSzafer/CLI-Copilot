@@ -2,18 +2,18 @@
 
 _Copilot-like autosuggestions generation for zsh._
 
-Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) plugin, providing an additional LLM-based autosuggest strategy and autosuggestion refreshment.
+Extends the [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) plugin by adding an LLM-based autosuggestion strategy and natural language command generation within the terminal.
 
 
 ## Installation
 
-1. Clone project repository to location of choice:
+1. Clone project repository to the location of choice:
 
     ```sh
     git clone https://github.com/OskarSzafer/CLI-Copilot.git
     ```
 
-2. Inside project repository create python ```venv``` and install requirements:
+2. Inside the project repository create python ```venv``` and install requirements:
 
     ```sh
     python -m venv venv && ./venv/bin/pip install -r requirements.txt
@@ -26,21 +26,20 @@ Extends the functionality of [zsh-autosuggestions](https://github.com/zsh-users/
     source ~/path/to/repository/copilot.zsh
     ```
 
-    _You can get your API-key on: https://aistudio.google.com/app/apikey_
+    _You can get your API-key from: https://aistudio.google.com/app/apikey_
 
-4. Start a new terminal sesion.
+4. Start a new terminal session.
 
 
 ## Requirements
 
-- Zsh v4.3.11 or later
-- Zsh-autosuggestions v0.7.0
-- Python 3.9 or later
+- Zsh>=4.3.11
+- Zsh-autosuggestions>=0.7.0
+- Python>=3.9
 
 
 ## Roadmap
 
-
-- Improvment of special character handling
-- Resolving a conflict with the history widget
-- Integration of open-source, local LLM
+- [] Improve handling of special characters in autosuggestions
+- [] Resolve conflicts with the zsh history widget
+- [] Integrate with open-source LLMs using Hugging Face Transformers
