@@ -40,6 +40,6 @@ Extends the [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestio
 
 ## Roadmap
 
-- [] Improve handling of special characters in buffer
-- [] Resolve conflicts with the zsh history widget
-- [] Integrate with open-source LLMs using Hugging Face Transformers
+- Improve handling of special characters in buffer
+- Resolve conflicts with the zsh history widget
+- Integrate with open-source LLMs using Hugging Face Transformers

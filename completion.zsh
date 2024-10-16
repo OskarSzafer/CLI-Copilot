@@ -5,6 +5,8 @@ previous_suggestion=""
 
 # Define a custom strategy for zsh-autosuggest
 _zsh_autosuggest_strategy_my_custom_suggestion() {
+    # Temporary solution for the handling of special characters
+
     # returns error if $BUFFER contains \ or [
     typeset -g suggestion=$(grep -i "^$BUFFER" "$OPTIONS_FILE" | head -n 1)
     
